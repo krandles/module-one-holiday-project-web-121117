@@ -80,3 +80,23 @@ beer_list.each do |beer|
   beer[1].beers << this_beer
   beer[2].beers << this_beer
 end
+
+review_list = [
+  [kevin, "Julius", 95, "like fresh squeezed orange juice"],
+  [kevin, "Reaction State", 100, "manna from heaven"],
+  [kevin, "Green Power", 92, "first batch was better"],
+  [kevin, "Heady Topper", 90, "The OG"],
+  [kevin, "Dulcinea", 99, ""],
+  [michael, "Julius", 92, "overrated"],
+  [ian, "Julius", 99, "the king"],
+  [michael, "Green", 97, "oh baby!"],
+  [michael, "King Julius", 100, "actually the king"],
+  [ian, "DDH Premiere", 98, "Hi Jesse!"],
+  [kevin, "Fundamental Observation", 100, "hypothetical rating"],
+  [michael, "Reaction State", 100, "I just came."]
+]
+
+review_list.each do |review|
+  this_beer = Beer.find_by name: review[1]
+  this_review = Review.create(user: review[0], beer: this_beer, score: review[2], comments: review[3], date: Time.now)
+end
